@@ -3,25 +3,24 @@
 
 #include <list>
 
-#include <libcryptosec/Certificate>
-#include <libcryptosec/CertificateBuilder>
-#include <libcryptosec/CertificateRequest>
-#include <libcryptosec/RDNSequence>
-#include <libcryptosec/BigInteger>
-#include <libcryptosec/MessageDigest>
+#include <libcryptosec/certificate/RDNSequence.h>
+#include <libcryptosec/RSAKeyPair.h>
+#include <libcryptosec/certificate/CertificateBuilder.h>
+#include <libcryptosec/certificate/CertificateRequest.h>
+#include <libcryptosec/certificate/Certificate.h>
 
 class AC {
 	public:
+		RDNSequence* rdnseq;
+		PublicKey* publkey;
+
 		AC(std::string common_name);
 
-		RDNSequence rdnseq;
-		RSAPublicKey publkey;
-
-		Certificate* generateCertificate(CertificateRequest req);
+		Certificate* generateCertificate(CertificateRequest& req);
 
 	protected:
-		RSAPrivateKey privkey;
-		list<Certificate> cert_list;
-}
+		RSAKeyPair keys;
+		list<Certificate> certified_users;
+};
 
-#endif /*AC_H_*/
+#endif /* AC_H_ */

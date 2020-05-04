@@ -1,7 +1,7 @@
 ############# CC FLAGS ###############################
 NAME = challenge.out
 CC = g++
-CPPFLAGS = -g -std=c++98
+CPPFLAGS = -g -std=c++11
 DEFS = -DFIPS
 
 ############# ENVIRONMENT ###############################
