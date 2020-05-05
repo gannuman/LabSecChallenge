@@ -1,6 +1,6 @@
 # DESAFIO SGC 2020
 
-Por Pedro Henrique Dadalt de Queiroz.
+Por Pedro Henrique Dadalt de Queiroz :)
 
 ## Rodando o Programa
 
