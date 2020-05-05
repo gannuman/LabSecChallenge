@@ -1,5 +1,7 @@
 # DESAFIO SGC 2020
 
+Por Pedro Henrique Dadalt de Queiroz.
+
 ## Rodando o Programa
 
 A solução para esse desafio foi desenvolvida utilizando a imagem do docker contida na Dockerfile, que já possuí todas as dependências. É recomendável rodar o programa dentro deste container.
