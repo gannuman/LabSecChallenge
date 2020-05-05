@@ -1,4 +1,4 @@
-#include "user.h"
+#include "nuclear-operator.h"
 
 NuclearOperator::NuclearOperator(std::string common_name) {
 	MessageDigest::loadMessageDigestAlgorithms();
@@ -18,12 +18,13 @@ NuclearOperator::~NuclearOperator() {
 	delete keys;
 }
 
-void NuclearOperator::askCertificate (AC* ac) {
+std::string NuclearOperator::askCertificate (AC* ac) {
 	CertificateRequest* request = new CertificateRequest();
 	request->setSubject(*this->rdnseq);
 	request->setPublicKey(*this->keys->getPublicKey());
 	this->certificate = ac->generateCertificate(*request);
 	delete request;
+	return this->rdnseq->getEntries(RDNSequence::COMMON_NAME).front();
 }
 
 ByteArray NuclearOperator::sign(ByteArray& digest) {

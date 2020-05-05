@@ -18,9 +18,11 @@ class AC {
 
 		Certificate* generateCertificate(CertificateRequest& req);
 
+		~AC();
+
 	protected:
-		RSAKeyPair keys;
-		list<Certificate> certified_users;
+		RSAKeyPair* keys;
+		list<Certificate*> certified_users;
 };
 
 #endif /* AC_H_ */

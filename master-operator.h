@@ -7,6 +7,7 @@
 
 #include "nuclear-operator.h"
 #include "multi-sign-request.h"
+#include "ac.h"
 
 class MasterOperator: public NuclearOperator {
 	/* Essa classe representa um operador master
@@ -21,10 +22,12 @@ class MasterOperator: public NuclearOperator {
 	public:
 		MasterOperator(std::string common_name);
 
-		std::string verifySignatureResponses();
+		std::string verifySignatureResponses(AC* ac);
 		std::string sendSignatureRequests();
-		std::string loadSigners(list<Certificate*> signers); 
+		std::string loadSigners(list<NuclearOperator*> signers); 
 		std::string loadDocument(std::string document_path);
+
+		~MasterOperator();
 
 	protected:
 		MultiSignRequest* request;

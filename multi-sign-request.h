@@ -8,27 +8,26 @@
 #include <libcryptosec/certificate/Certificate.h>
 
 #include "nuclear-operator.h"
+#include "ac.h"
 
 class MultiSignRequest {
+	public:	
+		MultiSignRequest();
 		/* -~-~-~-~-~-~-~-~-~-~- */
-		list<Certificate*> signers;
+		list<NuclearOperator*> signers;
 		list<ByteArray> signatures;
 	
-		void setSigners(list<Certificate*> signers);
+		void setSigners(list<NuclearOperator*> signers);
 		/* -~-~-~-~-~-~-~-~-~-~- */
 		ByteArray* document;
-		ByteArray* digest;
+		ByteArray digest;
 		void digestDocument();
 		/* -~-~-~-~-~-~-~-~-~-~-~ */  	
 		void askSignatures();
-		bool verifySignatures();
+		bool verifySignatures(AC* ac);
 
 		bool verified_positive;
 		std::string verified_err;	
-		/* -~-~-~-~-~-~-~-~-~-~-~ */
-		friend class MasterUser;
-	public:
-		MultiSignRequest();
 };
 
 #endif /* MULTI_SIGN_REQUEST_H_ */

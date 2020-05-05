@@ -1,6 +1,8 @@
 #ifndef NUCLEAR_OPERATOR_H_
 #define NUCLEAR_OPERATOR_H_
 
+#include <vector>
+
 #include <libcryptosec/RSAKeyPair.h>
 #include <libcryptosec/Signer.h>
 #include <libcryptosec/ByteArray.h>
@@ -19,9 +21,11 @@ class NuclearOperator {
 		RDNSequence* rdnseq;
 		Certificate* certificate;
 
-		void askCertificate(AC* ac);
+		std::string askCertificate(AC* ac);
 		ByteArray sign(ByteArray& digest);
 	 
+		~NuclearOperator();
+
 	protected:	
 		CertificateRequest request;
 		RSAKeyPair* keys;

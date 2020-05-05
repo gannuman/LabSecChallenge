@@ -8,20 +8,22 @@ MasterOperator::~MasterOperator() {
 	delete this->request;
 }
 
-std::string MasterOperator::verifySignarureResponse() {
-	if( this->request.verifySignatures() ) {
+std::string MasterOperator::verifySignatureResponses(AC* ac) {
+	if( this->request->verifySignatures(ac) ) {
 		return "As assinaturas sao legitimas!";
 	} else {
-		return this->request.verified_err;
+		return this->request->verified_err;
 	}
 }
 
 std::string MasterOperator::sendSignatureRequests() {
-	return this->request.askSignatures();
+	this->request->askSignatures();
+	return "Pedidos de assinatura enviados, assinaturas criadas e devolvidas.";
 }
 
-std::string MasterOperator::loadSigners(list<Certificate>& signers) {
-	return this->request.setSigners(signers);
+std::string MasterOperator::loadSigners(list<NuclearOperator*> signers) {
+	this->request->setSigners(signers);
+	return "Operadores assinantes selecionados.";
 }
 
 std::string MasterOperator::loadDocument(std::string document_path) {
@@ -35,6 +37,7 @@ std::string MasterOperator::loadDocument(std::string document_path) {
 		file.read (memblock, size);
 		file.close();
 	}
-	this->request.documet = new ByteArray(memblock);
-	this->request.digestDocument();
+	this->request->document = new ByteArray(memblock);
+	this->request->digestDocument();
+	return "Documento carregado e digerido.";
 }
