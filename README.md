@@ -7,6 +7,7 @@ Por Pedro Henrique Dadalt de Queiroz :)
 A solução para esse desafio foi desenvolvida utilizando a imagem do docker contida na Dockerfile, que já possuí todas as dependências. É recomendável rodar o programa dentro deste container.
 Para executar o programa basta clonar este repositório e executar `make`. O arquivo executável criado se chamará "challenge.out". Para executar basta chamar `./challenge.out'`.
 O programa explicará o que está fazendo e em alguns momentos pedirá input do usuário.
+Quando ele pedir um arquivo é possível entrar qualquer tipo de arquivo, pois ele será lido como binário. Porém, para teste eu deixei um arquivo chamado 'something.pdf'. O PDF do Relatório também pode ser utilizado.
 
 ## Relatório
 
